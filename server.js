@@ -19,25 +19,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', router);
 
-
-
 app.listen(port, () =>
     console.log(`Server running on http://localhost:${port}`));
 
 export default app;
 
-// var spawn = require('child_process').exec;
-
-// spawn('twitter-proxy');
-// spawn('http-server');
-// spawn('express');
-
-// const app = express();
-
-// app.use(cors());
- 
-
-// console.log('Server running on http://localhost:8080');
-// console.log('Request the Twitter API using: http://localhost:7890/1.1/statuses/user_timeline.json\?count\=30\&screen_name\=makeschool');
 
 

@@ -1,2 +1,20 @@
 <h1>I'm just testing!!!!!</h1>
-<p>{{  tweet }}</p>
+
+{{!-- {{#each testTweet}}
+<p>{{created_at}}</p>
+{{/each}} --}}
+
+<h1>MakeSchool</h1>
+{{#each tweets.MakeSchool}}
+<p>{{created_at}}</p>
+{{/each}}
+
+<h1>newsycombinator</h1>
+{{#each tweets.newsycombinator}}
+<p>{{created_at}}</p>
+{{/each}}
+
+<h1>ycombinator</h1>
+{{#each tweets.ycombinator}}
+<p>{{created_at}}</p>
+{{/each}}
