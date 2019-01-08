@@ -6,6 +6,6 @@ const config = {
   accessToken: process.env.ACCESS_TOKEN,
   accessTokenSecret: process.env.ACCESS_TOKEN_SECRET,
   port: process.env.TWITTER_PORT
-}
+};
 
 export default config;

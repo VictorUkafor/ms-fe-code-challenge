@@ -4,8 +4,11 @@
     "axios": "^0.18.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
+    "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "dotenv": "^6.2.0",
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb": "^17.1.0",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
     "http": "0.0.0",
@@ -15,12 +18,37 @@
   "scripts": {
     "start": "node build/server.js",
     "dev": "nodemon server.js --exec babel-node",
+    "lint": "node_modules/.bin/eslint --fix ./",
     "build": "babel . --ignore node_modules -d ./build -s --copy-files",
     "postinstall": "npm run build"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
-    "babel-preset-airbnb": "^3.2.0"
-  }
+    "babel-preset-airbnb": "^3.2.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.12.3"
+  },
+  "description": "## Setup",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VictorUkafor/ms-fe-code-challenge.git"
+  },
+  "keywords": [
+    "javascript",
+    "twitter",
+    "API",
+    "ES6",
+    "axios",
+    "handlebars"
+  ],
+  "author": "Victor Ukafor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VictorUkafor/ms-fe-code-challenge/issues"
+  },
+  "homepage": "https://github.com/VictorUkafor/ms-fe-code-challenge#readme"
 }
