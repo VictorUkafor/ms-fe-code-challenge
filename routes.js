@@ -19,11 +19,11 @@ router.get('/', async (req, res) => {
       tweets[res.data[0].user.screen_name] = res.data;
     });
 
-    return res.render('test', { tweets });
+    return res.render('home', { tweets });
   } catch (error) {
-    return res.render('test', { error: 'Server error' });
+    return res.render('home', { error: 'Server error' });
   }
 });
 
 
-module.exports = router;
+export default router;
