@@ -1,9 +1,18 @@
+import { LocalStorage } from 'node-localstorage';
 import axios from 'axios';
-import { trimDate, urls } from './lib';
+import {
+  trimDate, urls, layoutSetting, defaultSetting, getColumn
+} from './lib';
+
+const localStorage = new LocalStorage('./scratch');
 
 export const fetchTweets = async (req, res) => {
-  const allUrls = urls(30);
   try {
+    const {
+      position, numberOfTweets, date, backgroundColor
+    } = layoutSetting();
+    const { left, center, right } = position;
+    const allUrls = urls(numberOfTweets);
     const tweets = {};
     const responses = await Promise.all(allUrls.map(async (url) => {
       const data = await axios.get(url);
@@ -17,9 +26,26 @@ export const fetchTweets = async (req, res) => {
 
     return res.render('home', {
       tweets,
-      helpers: { trimDate }
+      left,
+      center,
+      right,
+      numberOfTweets,
+      backgroundColor,
+      date,
+      helpers: { trimDate, getColumn }
     });
   } catch (error) {
     return res.render('home', { error: 'Server error' });
   }
 };
+
+
+export const showSetting = (req, res) => {
+  let setting = {}
+  if (localStorage.getItem('layout_setting')) {
+    setting = localStorage.getItem('layout_setting');
+  }
+  setting = defaultSetting;
+
+  return res.render('layout_setting', { setting });
+}

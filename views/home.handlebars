@@ -8,9 +8,9 @@
                                 
 									<div class="posts-section col-lg-4 col-md-4">
 											<div class="post-topbar">
-													<h2>@MakeSchool Tweets</h2>
+													<h2>@{{left}} Tweets</h2>
 												</div>
-                                        {{#each tweets.MakeSchool}}
+                                        {{#each (getColumn tweets left)}}
 											<div class="post-bar">
 												<div class="post_topbar">
 													<div class="usy-dt">
@@ -39,9 +39,9 @@
                                     
 										<div class="posts-section col-lg-4 col-md-4">
 												<div class="post-topbar">
-														<h2>@newsycombinator Tweets</h2>
+														<h2>@{{center}} Tweets</h2>
 													</div>
-	                                        {{#each tweets.newsycombinator}}
+	                                        {{#each (getColumn tweets center)}}
 											<div class="post-bar">
 												<div class="post_topbar">
 													<div class="usy-dt">
@@ -70,9 +70,9 @@
 											<div class="posts-section col-lg-4 col-md-4">
 
 													<div class="post-topbar">
-															<h2>@ycombinator Tweets</h2>
+															<h2>@{{right}} Tweets</h2>
 														</div>
-		                                        {{#each tweets.ycombinator}}
+		                                        {{#each (getColumn tweets right)}}
 											<div class="post-bar">
 												<div class="post_topbar">
 													<div class="usy-dt">
