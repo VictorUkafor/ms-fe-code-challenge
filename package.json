@@ -20,7 +20,7 @@
     "dev": "nodemon server.js --exec babel-node",
     "lint": "node_modules/.bin/eslint --fix ./",
     "clean": "rm -rf build && mkdir build",
-    "build-babel": "npm audix fix && babel . --ignore node_modules -d ./build -s --copy-files",
+    "build-babel": "npm audit fix && babel . --ignore node_modules -d ./build -s --copy-files",
     "build": "npm run clean && npm run build-babel",
     "postinstall": "npm run build"
   },
