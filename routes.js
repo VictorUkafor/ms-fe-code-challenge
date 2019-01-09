@@ -1,28 +1,15 @@
 import express from 'express';
-import axios from 'axios';
+import fetchTweets from './lib/fetchTweets';
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get('/', (req, res) => {
   const makeschoolUrl = 'http://localhost:7890/1.1/statuses/user_timeline.json?count=30&screen_name=makeschool';
   const newsycombinatorUrl = 'http://localhost:7890/1.1/statuses/user_timeline.json?count=30&screen_name=newsycombinator';
   const ycombinatorUrl = 'http://localhost:7890/1.1/statuses/user_timeline.json?count=30&screen_name=ycombinator';
+  const urls = [makeschoolUrl, newsycombinatorUrl, ycombinatorUrl];
 
-  try {
-    const makeschoolRes = await axios.get(makeschoolUrl);
-    const newsycombinatorRes = await axios.get(newsycombinatorUrl);
-    const ycombinatorRes = await axios.get(ycombinatorUrl);
-    const responses = [makeschoolRes, newsycombinatorRes, ycombinatorRes];
-    const tweets = {};
-
-    responses.map(async (res) => {
-      tweets[res.data[0].user.screen_name] = res.data;
-    });
-
-    return res.render('home', { tweets });
-  } catch (error) {
-    return res.render('home', { error: 'Server error' });
-  }
+  return fetchTweets(urls, res);
 });
 
 
