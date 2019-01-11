@@ -1,4 +1,5 @@
 		<main>
+			<h3>{{error}}</h3>
 			<div class="main-section">
 				<div class="container">
 					<div class="main-section-data">
@@ -18,14 +19,14 @@
 														<a href="#" title="" >Left &nbsp; &nbsp;   Center  &nbsp; &nbsp; Right</a>
 
 													</div>
-													<small>{{setting.position.left}} &nbsp; &nbsp; {{setting.position.center}} &nbsp; &nbsp; {{setting.position.right}}</small>
+													<small>{{left}} &nbsp; &nbsp; {{center}} &nbsp; &nbsp; {{right}}</small>
 												</div>
 
 												<div class="filter-dd">
 														<div class="filter-ttl">
 															<h3>Number of Tweets</h3>
 														</div>
-														<small>{{setting.numberOfTweets}}</small>
+														<small>{{numberOfTweets}}</small>
 													</div>
 
 
@@ -33,20 +34,19 @@
 											<div class="filter-ttl">
 												<h3>Page Skin</h3>
 											</div>
-											<small>{{setting.backgroundColor}}</small>
+											<small>{{backgroundColour}}</small>
 										</div>
    
 										<div class="filter-dd">
 										<div class="filter-ttl">
 												<h3>Date</h3>
 											</div>
-											<small>{{setting.date}}</small>
+											<small>{{date}}</small>
 
 										</div>
 
 										<div class="save-stngs">
 												<ul>
-													<li  class="float-left"><button type="submit">Restore Default Setting</button></li>
 													<li  class="float-right"><a href="/edit-settings"><button type="submit">Edit Setting</button></a></li>
 												</ul>
 											</div>
