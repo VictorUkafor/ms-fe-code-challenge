@@ -6,8 +6,12 @@ import {
 
 const localStorage = new LocalStorage('./scratch');
 
+
+// This method fetches tweets from Twitter API and
+// displays them on the page
 export const fetchTweets = async (req, res) => {
   try {
+    // get settings values from the localStorage
     const left = localStorage.getItem('left_position') || 'MakeSchool';
     const center = localStorage.getItem('center_position') || 'newsycombinator';
     const right = localStorage.getItem('right_position') || 'ycombinator';
@@ -27,13 +31,14 @@ export const fetchTweets = async (req, res) => {
       return tweets;
     });
 
+    // values for meta tags
     res.locals.metaTags = {
       title: 'Home',
       description: "You're welcome",
       keywords: 'Twitter, API',
     };
 
-    return res.render('home', {
+    res.render('home', {
       tweets,
       left,
       center,
@@ -44,18 +49,26 @@ export const fetchTweets = async (req, res) => {
       helpers: { trimDate, getColumn }
     });
   } catch (error) {
-    return res.render('home', { error: 'Server error' });
+    res.render('home', { error: 'Server error' });
   }
 };
 
-
+// displays settings page
 export const showSetting = (req, res) => {
+  // get settings values from the localStorage
   const left = localStorage.getItem('left_position') || 'MakeSchool';
   const center = localStorage.getItem('center_position') || 'newsycombinator';
   const right = localStorage.getItem('right_position') || 'ycombinator';
   const backgroundColour = localStorage.getItem('background_colour') || 'Default';
   const numberOfTweets = localStorage.getItem('number_of_tweets') || 30;
   const date = localStorage.getItem('date') || '';
+
+  // values for meta tags
+  res.locals.metaTags = {
+    title: 'Settings',
+    description: 'Settings Page',
+    keywords: 'Twitter, API',
+  };
 
   res.render('layout_setting', {
     left,
@@ -67,13 +80,26 @@ export const showSetting = (req, res) => {
   });
 };
 
-export const setSetting = (req, res) => res.render('edit_setting');
+// displays the edit settings page
+export const setSetting = (req, res) => {
+      // values for meta tags
+      res.locals.metaTags = {
+        title: 'Update Settings',
+        description: "Update Settings",
+        keywords: 'Twitter, API',
+      };
+      
+      res.render('edit_setting');
+}
 
+// processes the edit settings page
 export const processForm = (req, res) => {
+  // get values from settings form
   let {
     columnOrder, numberOfTweets, backgroundColour, date
   } = req.body;
 
+  // validates form
   if (columnOrder === 'choose . . .') {
     columnOrder = 'makeschool newsycombinator ycombinator';
   }
@@ -86,6 +112,7 @@ export const processForm = (req, res) => {
   const center = position[1];
   const right = position[2];
 
+  // saves settings values to localstorage
   localStorage.setItem('left_position', left);
   localStorage.setItem('center_position', center);
   localStorage.setItem('right_position', right);
