@@ -1,5 +1,7 @@
 import express from 'express';
-import { fetchTweets, showSetting, setSetting, processForm } from './controller';
+import {
+  fetchTweets, showSetting, setSetting, processForm
+} from './controller';
 
 const router = express.Router();
 

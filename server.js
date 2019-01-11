@@ -6,24 +6,24 @@ import exphbs from 'express-handlebars';
 import cors from 'cors';
 import {} from 'dotenv/config';
 import config from './config';
-import router from './routes';
+import router from './routes'
+import { getColumn } from './lib';
 
 const app = express();
 const port = process.env.PORT;
 
 twitterProxyServer(config);
+
 const hbs = exphbs.create({
-    helpers: {
-        link_to: function () { return res.redirect("/"); },
-    }
+    helpers: { getColumn },
+    defaultLayout: 'main'
 });
- 
 
 app.use(express.static(path.join(__dirname, '/public')));
 app.engine('handlebars', hbs.engine);
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 app.use(cors());
+app.use(express.urlencoded());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', router);

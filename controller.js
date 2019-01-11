@@ -24,6 +24,12 @@ export const fetchTweets = async (req, res) => {
       return tweets;
     });
 
+    res.locals.metaTags = {
+      title: 'Home',
+      description: "You're welcome",
+      keywords: 'Twitter, API',
+    };
+
     return res.render('home', {
       tweets,
       left,
@@ -50,48 +56,26 @@ export const processForm = async (req, res) => {
       columnOrder, numberOfTweets, backgroundColor, date
     } = res.body;
 
-    if (columnOrder === 'choose . . .') {
-      columnOrder = 'makeschool newsycombinator ycombinator';
-    }
-    if (numberOfTweets === 'choose . . .') { numberOfTweets = '30'; }
-    if (backgroundColor === 'choose . . .') { backgroundColor = 'Default'; }
-    if (date === 'choose . . .') { date = ''; }
+      if (columnOrder === 'choose . . .') {
+        columnOrder = 'makeschool newsycombinator ycombinator';
+      }
+      if (numberOfTweets === 'choose . . .') { numberOfTweets = '30'; }
+      if (backgroundColor === 'choose . . .') { backgroundColor = 'Default'; }
+      if (date === 'choose . . .') { date = ''; }
 
-    const position = columnOrder.split(' ');
-    const left = position[0];
-    const center = position[1];
-    const right = position[2];
+      const position = columnOrder.split(' ');
+      const left = position[0];
+      const center = position[1];
+      const right = position[2];
 
-    localStorage.setItem('left_position', left);
-    localStorage.setItem('center_position', center);
-    localStorage.setItem('right_position', right);
-    localStorage.setItem('background_colour', backgroundColor);
-    localStorage.setItem('number_of_tweets', numberOfTweets);
-    localStorage.setItem('date', date);
+      localStorage.setItem('left_position', left);
+      localStorage.setItem('center_position', center);
+      localStorage.setItem('right_position', right);
+      localStorage.setItem('background_colour', backgroundColor);
+      localStorage.setItem('number_of_tweets', numberOfTweets);
+      localStorage.setItem('date', date);
 
-    const allUrls = urls(numberOfTweets);
-    const tweets = {};
-    const responses = await Promise.all(allUrls.map(async (url) => {
-      const data = await axios.get(url);
-      return data;
-    }));
-
-    responses.map((response) => {
-      tweets[response.data[0].user.screen_name] = response.data;
-      return tweets;
-    });
-
-
-    return res.render('home', {
-      tweets,
-      left,
-      center,
-      right,
-      numberOfTweets,
-      backgroundColor,
-      date,
-      helpers: { trimDate, getColumn }
-    });
+      return res.render('layout_setting', { setting: defaultSetting });
   } catch (error) {
     return res.render('home', { error: 'Server error' });
   }
