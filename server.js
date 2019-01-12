@@ -12,9 +12,13 @@ const app = express();
 const port = process.env.PORT;
 
 twitterProxyServer(config);
+const hbs = exphbs.create({
+    defaultLayout: 'main'
+})
 
 app.use(express.static(path.join(__dirname, '/public')));
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.engine('handlebars', hbs.engine);
+//app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 app.use(cors());
 app.use(bodyParser.json());

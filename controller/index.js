@@ -81,7 +81,17 @@ export const showSetting = (req, res) => {
 };
 
 // displays the edit settings page
-export const setSetting = (req, res) => res.render('edit_setting');
+export const setSetting = (req, res) => {
+      // values for meta tags
+      res.locals.metaTags = {
+        title: 'Update Settings',
+        description: "Update Settings",
+        keywords: 'Twitter, API',
+      };
+      
+      res.render('edit_setting');
+}
+
 
 // processes the edit settings page
 export const processForm = (req, res) => {
