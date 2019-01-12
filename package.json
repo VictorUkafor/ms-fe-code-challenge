@@ -27,7 +27,8 @@
     "clean": "rm -rf build && mkdir build",
     "build-babel": "babel . --ignore node_modules -d ./build -s --copy-files",
     "build": "npm run clean && npm run build-babel",
-    "postinstall": "npm run build"
+    "audit": "npm audit fix",
+    "postinstall": "npm run audit && npm run build"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
