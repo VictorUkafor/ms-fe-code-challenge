@@ -92,6 +92,7 @@ export const setSetting = (req, res) => {
       res.render('edit_setting');
 }
 
+
 // processes the edit settings page
 export const processForm = (req, res) => {
   // get values from settings form
