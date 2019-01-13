@@ -23,7 +23,7 @@
     "twitter-proxy": "^2.0.0"
   },
   "scripts": {
-    "start": "node build/server.js",
+    "start": "node ./build/server.js",
     "dev": "nodemon server.js --exec babel-node",
     "lint": "node_modules/.bin/eslint --fix ./",
     "clean": "rm -rf build && mkdir build",
