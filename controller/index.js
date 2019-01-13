@@ -1,11 +1,8 @@
 import { LocalStorage } from 'node-localstorage';
 import axios from 'axios';
-import {
-  trimDate, urls, getColumn
-} from '../lib';
+import { trimDate, urls, getColumn } from '../lib';
 
 const localStorage = new LocalStorage('./scratch');
-
 
 // This method fetches tweets from Twitter API and
 // displays them on the page
@@ -82,15 +79,15 @@ export const showSetting = (req, res) => {
 
 // displays the edit settings page
 export const setSetting = (req, res) => {
-      // values for meta tags
-      res.locals.metaTags = {
-        title: 'Update Settings',
-        description: "Update Settings",
-        keywords: 'Twitter, API',
-      };
-      
-      res.render('edit_setting');
-}
+  // values for meta tags
+  res.locals.metaTags = {
+    title: 'Update Settings',
+    description: 'Update Settings',
+    keywords: 'Twitter, API',
+  };
+
+  res.render('edit_setting');
+};
 
 
 // processes the edit settings page
