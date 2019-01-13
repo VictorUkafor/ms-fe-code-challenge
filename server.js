@@ -23,8 +23,6 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', router);
-server.listen(port, () => {
-  console.log(`Now listening on port ${port}`);
-});
+server.listen(process.env.PORT || port)
 
 export default app;
