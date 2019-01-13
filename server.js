@@ -13,8 +13,8 @@ twitterProxyServer(config);
 const app = express();
 const port = process.env.PORT;
 const hbs = exphbs.create({
-    defaultLayout: 'main'
-})
+  defaultLayout: 'main'
+});
 
 app.use(express.static(path.join(__dirname, '/public')));
 app.engine('handlebars', hbs.engine);
