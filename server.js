@@ -11,7 +11,7 @@ import router from './routes';
 twitterProxyServer(config);
 
 const app = express();
-const port = process.env.PORT || 8000;
+const port = process.env.PORT;
 const hbs = exphbs.create({
   defaultLayout: 'main'
 });
