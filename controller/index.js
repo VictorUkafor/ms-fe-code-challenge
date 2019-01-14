@@ -1,3 +1,4 @@
+import regeneratorRuntime from "regenerator-runtime";
 import { LocalStorage } from 'node-localstorage';
 import axios from 'axios';
 import { trimDate, urls, getColumn } from '../lib';

@@ -1,5 +1,6 @@
 import path from 'path';
 import express from 'express';
+import logger from 'morgan';
 import bodyParser from 'body-parser';
 import twitterProxyServer from 'twitter-proxy';
 import exphbs from 'express-handlebars';
@@ -17,6 +18,7 @@ const hbs = exphbs.create({
 });
 
 app.use(express.static(path.join(__dirname, '/public')));
+app.use(logger("combined"));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.use(cors());
