@@ -1,0 +1,64 @@
+{
+  "name": "makeschoool-challenge",
+  "version": "1.0.0",
+  "description": "A web app built on Twitter API",
+  "main": "server.js",
+  "homepage": "http://VictorUkafor.github.io/ms-fe-code-challenge/",
+  "engines": {
+    "node": "10.15.0",
+    "npm": "6.4.1"
+  },
+  "dependencies": {
+    "@babel/core": "^7.2.2",
+    "axios": "^0.18.0",
+    "babel-preset-env": "^1.7.0",
+    "body-parser": "^1.18.3",
+    "connect": "^3.6.6",
+    "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "gh-pages": "^2.0.1",
+    "node-localstorage": "^1.3.1",
+    "twitter-proxy": "^2.0.0"
+  },
+  "scripts": {
+    "start": "node build/server.js",
+    "dev": "nodemon server.js --exec babel-node",
+    "lint": "node_modules/.bin/eslint --fix ./",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel . --ignore node_modules -d ./build -s --copy-files",
+    "build": "npm run clean && npm run build-babel",
+    "postinstall": "npm run build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-airbnb": "^3.2.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.12.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VictorUkafor/ms-fe-code-challenge.git"
+  },
+  "keywords": [
+    "javascript",
+    "twitter",
+    "API",
+    "ES6",
+    "axios",
+    "handlebars"
+  ],
+  "author": "Victor Ukafor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VictorUkafor/ms-fe-code-challenge/issues"
+  },
+  "homepage": "https://github.com/VictorUkafor/ms-fe-code-challenge#readme"
+}
