@@ -6,19 +6,20 @@ import twitterProxyServer from 'twitter-proxy';
 import exphbs from 'express-handlebars';
 import cors from 'cors';
 import {} from 'dotenv/config';
-import config from './config';
 import router from './routes';
+import { config, skinColour } from './lib';
 
 twitterProxyServer(config);
 
 const app = express();
 const port = process.env.PORT || '8000';
 const hbs = exphbs.create({
-  defaultLayout: 'main'
+  defaultLayout: 'main',
+  helpers: { skinColour }
 });
 
 app.use(express.static(path.join(__dirname, '/public')));
-app.use(logger("combined"));
+app.use(logger('combined'));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.use(cors());

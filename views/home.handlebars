@@ -7,7 +7,7 @@
 
                                 
 									<div class="posts-section col-lg-4 col-md-4">
-											<div class="post-topbar">
+											<div style="border-top: 4px solid {{{skinColour}}};" class="post-topbar">
 													<h2>@{{left}} Tweets</h2>
 												</div>
                                         {{#each (getColumn tweets left)}}
@@ -38,7 +38,7 @@
 
                                     
 										<div class="posts-section col-lg-4 col-md-4">
-												<div class="post-topbar">
+												<div style="border-top: 4px solid {{{skinColour}}};" class="post-topbar">
 														<h2>@{{center}} Tweets</h2>
 													</div>
 	                                        {{#each (getColumn tweets center)}}
@@ -69,7 +69,7 @@
                                 
 											<div class="posts-section col-lg-4 col-md-4">
 
-													<div class="post-topbar">
+													<div style="border-top: 4px solid {{{skinColour}}};" class="post-topbar">
 															<h2>@{{right}} Tweets</h2>
 														</div>
 		                                        {{#each (getColumn tweets right)}}

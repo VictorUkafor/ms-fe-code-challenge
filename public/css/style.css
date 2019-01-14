@@ -1297,7 +1297,7 @@ main {
 	cursor: pointer;
 }
 .save-stngs ul li button:hover, .save-stngs ul li input:hover{
-	background-color: #e44d3a;
-	color: #fff;
+	background-color: #fff;
+	color: #000;
 	border-color: transparent;
 }

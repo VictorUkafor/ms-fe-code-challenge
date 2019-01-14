@@ -1,4 +1,3 @@
-import regeneratorRuntime from "regenerator-runtime";
 import { LocalStorage } from 'node-localstorage';
 import axios from 'axios';
 import { trimDate, urls, getColumn } from '../lib';
@@ -13,9 +12,7 @@ export const fetchTweets = async (req, res) => {
     const left = localStorage.getItem('left_position') || 'MakeSchool';
     const center = localStorage.getItem('center_position') || 'newsycombinator';
     const right = localStorage.getItem('right_position') || 'ycombinator';
-    const backgroundColour = localStorage.getItem('background_colour') || 'Default';
     const numberOfTweets = localStorage.getItem('number_of_tweets') || 30;
-    const date = localStorage.getItem('date') || '';
 
     const allUrls = urls(numberOfTweets);
     const tweets = {};
@@ -41,9 +38,6 @@ export const fetchTweets = async (req, res) => {
       left,
       center,
       right,
-      numberOfTweets,
-      backgroundColour,
-      date,
       helpers: { trimDate, getColumn }
     });
   } catch (error) {
@@ -59,7 +53,6 @@ export const showSetting = (req, res) => {
   const right = localStorage.getItem('right_position') || 'ycombinator';
   const backgroundColour = localStorage.getItem('background_colour') || 'Default';
   const numberOfTweets = localStorage.getItem('number_of_tweets') || 30;
-  const date = localStorage.getItem('date') || '';
 
   // values for meta tags
   res.locals.metaTags = {
@@ -74,7 +67,6 @@ export const showSetting = (req, res) => {
     right,
     numberOfTweets,
     backgroundColour,
-    date,
   });
 };
 
@@ -95,16 +87,15 @@ export const setSetting = (req, res) => {
 export const processForm = (req, res) => {
   // get values from settings form
   let {
-    columnOrder, numberOfTweets, backgroundColour, date
+    columnOrder, numberOfTweets, backgroundColour
   } = req.body;
 
-  // validates form
+  // validates form fields
   if (columnOrder === 'choose . . .') {
-    columnOrder = 'makeschool newsycombinator ycombinator';
+    columnOrder = 'MakeSchool newsycombinator ycombinator';
   }
   if (numberOfTweets === 'choose . . .') { numberOfTweets = '30'; }
   if (backgroundColour === 'choose . . .') { backgroundColour = 'Default'; }
-  if (date === 'choose . . .') { date = ''; }
 
   const position = columnOrder.split(' ');
   const left = position[0];
@@ -117,7 +108,7 @@ export const processForm = (req, res) => {
   localStorage.setItem('right_position', right);
   localStorage.setItem('background_colour', backgroundColour);
   localStorage.setItem('number_of_tweets', numberOfTweets);
-  localStorage.setItem('date', date);
+
 
   res.redirect('/');
 };
